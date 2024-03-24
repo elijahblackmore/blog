@@ -20,8 +20,6 @@ export function getPostBySlug(slug) {
 export function getPosts() {
   const slugs = getPostSlugs();
 
-  console.log(slugs);
-
   const posts = slugs
     .map((slug) => getPostBySlug(slug))
     .sort((a, b) => (a.date > b.date ? -1 : 1));
