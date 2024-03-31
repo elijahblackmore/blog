@@ -27,5 +27,6 @@ h3>a.subheading-anchor {
 }
 
 .subheading-anchor {
-  @apply no-underline font-bold;
+  @apply no-underline font-semibold text-light-heading dark:text-dark-heading;
+
 }
