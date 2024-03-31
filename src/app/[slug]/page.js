@@ -44,26 +44,28 @@ export default async function Post({ params }) {
 
   return (
     <main>
-      <Link href="/" className="flex items-center gap-x-1.5">
-        <ChevronLeft
-          size={14}
-          strokeWidth={3}
-          className="text-light-icon dark:text-dark-icon"
-        />
-        <span className="text-sm font-medium text-light-body dark:text-dark-body">
-          Back to posts
-        </span>
-      </Link>
-      <h1 className="my-4 text-2xl font-extrabold text-light-heading dark:text-dark-heading">
+      <div className="flex items-center justify-between">
+        <Link href="/" className="flex w-fit items-center gap-x-2.5">
+          <ChevronLeft
+            size={16}
+            strokeWidth={3}
+            className="text-light-icon dark:text-dark-icon"
+          />
+          <span className="font-mono text-sm font-medium text-light-body underline decoration-dark-underline decoration-wavy underline-offset-8 dark:text-dark-body">
+            Back to posts
+          </span>
+        </Link>
+        <time
+          className="w-24 font-mono text-sm leading-7 text-light-body md:mt-0 md:text-right dark:text-dark-body"
+          dateTime={post.date}
+        >
+          {format(post.date, "d/MM/yyyy")}
+        </time>
+      </div>
+      <h1 className="mb-0 mt-8 text-2xl font-semibold text-light-heading dark:text-dark-heading">
         {post.title}
       </h1>
-      <time
-        className="text-sm text-light-body dark:text-dark-body"
-        dateTime={post.date}
-      >
-        Posted on {format(post.date, `MMMM dd, yyyy`)}
-      </time>
-      <section className="prose prose-neutral pt-12 dark:prose-invert">
+      <section className="prose prose-theme max-w-none pt-20 dark:prose-invert">
         {content}
       </section>
     </main>
