@@ -1,0 +1,31 @@
+pre[data-theme*=" "] {
+  background-color: var(--shiki-light-bg);
+}
+
+code[data-theme*=" "] span {
+  color: var(--shiki-light);
+  background-color: var(--shiki-light-bg);
+}
+
+@media (prefers-color-scheme: dark) {
+  pre[data-theme*=" "] {
+    background-color: var(--shiki-dark-bg);
+  }
+
+  code[data-theme*=" "] span {
+    color: var(--shiki-dark);
+    background-color: var(--shiki-dark-bg);
+  }
+}
+
+h2>a.subheading-anchor {
+  @apply text-xl
+}
+
+h3>a.subheading-anchor {
+  @apply text-lg
+}
+
+.subheading-anchor {
+  @apply no-underline font-bold;
+}
