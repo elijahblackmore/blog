@@ -8,8 +8,8 @@
       "@/lib": [
         "lib/*"
       ],
-      "@/components/*": [
-        "components/*"
+      "@/styles": [
+        "styles/*"
       ]
     }
   }
