@@ -1,9 +1,10 @@
 import { getPostBySlug, getPosts } from "@/lib/posts";
 import "@/styles/markdown.css";
-import { format } from "date-fns";
+import ThemeSwitch from "@/components/ThemeSwitch";
 import { ChevronLeft } from "lucide-react";
-import { compileMDX } from "next-mdx-remote/rsc";
 import Link from "next/link";
+import { format } from "date-fns";
+import { compileMDX } from "next-mdx-remote/rsc";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeExternalLinks from "rehype-external-links";
 import rehypePrettyCode from "rehype-pretty-code";
@@ -45,32 +46,41 @@ export default async function Post({ params }) {
   });
 
   return (
-    <main>
-      <div className="flex items-center justify-between">
+    <>
+      <div className="mb-8 flex items-center justify-between">
         <Link href="/" className="flex w-fit items-center gap-x-2.5">
           <ChevronLeft
-            size={16}
+            size={18}
             strokeWidth={3}
             className="text-light-icon dark:text-dark-icon"
           />
-          <span className="font-mono text-sm font-medium text-light-body underline decoration-light-underline decoration-wavy underline-offset-8 dark:text-dark-body dark:decoration-dark-underline">
-            Back to posts
+          <span className="font-mono text-sm font-medium text-light-body underline decoration-light-icon decoration-wavy underline-offset-4 dark:text-dark-heading dark:decoration-dark-icon">
+            Go back
           </span>
         </Link>
         <time
-          className="w-24 font-mono text-sm font-medium leading-7 text-light-body md:mt-0 md:text-right dark:text-dark-body"
+          className="hidden w-24 font-mono text-sm font-normal leading-7 text-light-body dark:text-dark-body md:mt-0 md:text-right"
           dateTime={post.date}
         >
-          {format(post.date, "d/MM/yyyy")}
+          {format(post.date, "MMM dd yyyy")}
         </time>
+        <ThemeSwitch />
       </div>
-      <h1 className="border-light-underline mb-0 mt-8 border-b-0 pb-4 text-2xl font-semibold text-light-heading dark:border-dark-underline dark:text-dark-heading">
+
+      <h1 className="border-b-0 border-light-underline pb-2.5 pt-2 text-2xl font-bold text-light-heading dark:border-dark-underline dark:text-dark-heading">
         {post.title}
       </h1>
-      <section className="prose prose-theme mb-20 max-w-none pt-4 dark:prose-invert prose-a:decoration-dark-underline dark:prose-a:decoration-dark-underline">
+
+      <time
+        className="font-mono text-sm text-light-body dark:text-dark-body"
+        dateTime={post.date}
+      >
+        Posted {format(post.date, "MMM dd, yyyy")}
+      </time>
+      <section className="prose prose-theme max-w-none pt-12 dark:prose-invert prose-a:decoration-light-icon dark:prose-a:decoration-dark-icon">
         {content}
       </section>
-    </main>
+    </>
   );
 }
 
