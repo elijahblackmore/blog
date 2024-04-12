@@ -1,14 +1,16 @@
 import "@/globals.css";
-import { Outfit } from "next/font/google";
+import ThemeProvider from "@/components/ThemeProvider";
+import Footer from "@/components/Footer";
 import { JetBrains_Mono } from "next/font/google";
+import { Space_Grotesk } from "next/font/google";
 
-const outfit = Outfit({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  variable: "--font-outfit",
+  variable: "--font-space-grotesk",
   display: "swap",
 });
 
-const jetbrains = JetBrains_Mono({
+const jetBrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-jetbrains-mono",
   display: "swap",
@@ -20,11 +22,21 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="bg-light-surface dark:bg-dark-surface">
+    <html lang="en">
       <body
-        className={`${outfit.variable} ${jetbrains.variable} mx-auto mt-20 max-w-3xl px-6 font-sans`}
+        suppressHydrationWarning
+        className={`${spaceGrotesk.variable} ${jetBrainsMono.variable} mx-auto flex min-h-screen max-w-3xl flex-col bg-light-surface px-6 font-sans dark:bg-dark-surface`}
       >
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          themeColor={{ dark: "#141218", light: "#FEF7FF" }}
+          enableSystem
+          disableTransitionOnChange
+        >
+          <main className="mt-6 flex-1 md:mt-12">{children}</main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );
