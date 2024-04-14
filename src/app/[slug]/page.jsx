@@ -5,6 +5,7 @@ import { ChevronLeft } from "lucide-react";
 import Link from "next/link";
 import { format } from "date-fns";
 import { compileMDX } from "next-mdx-remote/rsc";
+import { rehypeGithubAlerts } from "rehype-github-alerts";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeExternalLinks from "rehype-external-links";
 import rehypePrettyCode from "rehype-pretty-code";
@@ -40,6 +41,7 @@ export default async function Post({ params }) {
               },
             },
           ],
+          [rehypeGithubAlerts],
         ],
       },
     },
@@ -48,26 +50,23 @@ export default async function Post({ params }) {
   return (
     <>
       <div className="mb-8 flex items-center justify-between">
-        <Link href="/" className="flex w-fit items-center gap-x-2.5">
+        <Link
+          href="/"
+          className="flex w-fit items-center gap-x-1.5 rounded-full border border-dashed border-[#B0A7C0] py-1 pl-1.5 pr-3 dark:border-dark-border"
+        >
           <ChevronLeft
             size={18}
-            strokeWidth={3}
+            strokeWidth={2.5}
             className="text-light-icon dark:text-dark-icon"
           />
-          <span className="font-mono text-sm font-medium text-light-body underline decoration-light-icon decoration-wavy underline-offset-4 dark:text-dark-heading dark:decoration-dark-icon">
-            Go back
+          <span className="font-mono text-sm font-medium text-light-heading dark:text-dark-heading dark:decoration-dark-underline">
+            Back
           </span>
         </Link>
-        <time
-          className="hidden w-24 font-mono text-sm font-normal leading-7 text-light-body dark:text-dark-body md:mt-0 md:text-right"
-          dateTime={post.date}
-        >
-          {format(post.date, "MMM dd yyyy")}
-        </time>
         <ThemeSwitch />
       </div>
 
-      <h1 className="border-b-0 border-light-underline pb-2.5 pt-2 text-2xl font-bold text-light-heading dark:border-dark-underline dark:text-dark-heading">
+      <h1 className="pb-2.5 pt-2 text-2xl font-bold text-light-heading dark:text-dark-heading">
         {post.title}
       </h1>
 
@@ -77,7 +76,7 @@ export default async function Post({ params }) {
       >
         Posted {format(post.date, "MMM dd, yyyy")}
       </time>
-      <section className="prose prose-theme max-w-none pt-12 dark:prose-invert prose-a:decoration-light-icon dark:prose-a:decoration-dark-icon">
+      <section className="prose prose-theme max-w-none pt-12 dark:prose-invert prose-a:decoration-light-underline dark:prose-a:decoration-dark-underline">
         {content}
       </section>
     </>
