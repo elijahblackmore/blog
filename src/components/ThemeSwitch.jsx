@@ -14,10 +14,10 @@ export default function ThemeSwitch() {
     <button
       type="button"
       onClick={toggleTheme}
-      className="flex h-10 w-10 items-center justify-center rounded-xl bg-light-elevation-20 dark:bg-dark-elevation-20"
+      className="flex h-10 w-10 items-center justify-center rounded-2xl border border-dashed border-light-border transition hover:scale-100 dark:border-dark-border"
     >
-      <Sun size={20} className="text-light-body dark:hidden" />
-      <MoonStar size={20} className="hidden text-dark-body dark:block" />
+      <Sun size={18} className="text-light-body dark:hidden" />
+      <MoonStar size={18} className="hidden text-dark-body dark:block" />
     </button>
   );
 }
