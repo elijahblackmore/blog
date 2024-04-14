@@ -1,22 +1,23 @@
-pre[data-theme*=" "] {
+.light pre[data-theme*=" "] {
   background-color: var(--shiki-light-bg);
+  position: relative;
 }
 
-code[data-theme*=" "] span {
+.light code[data-theme*=" "] span {
   color: var(--shiki-light);
-  background-color: var(--shiki-light-bg);
+  position: relative;
 }
 
-@media (prefers-color-scheme: dark) {
-  pre[data-theme*=" "] {
-    background-color: var(--shiki-dark-bg);
-  }
-
-  code[data-theme*=" "] span {
-    color: var(--shiki-dark);
-    background-color: var(--shiki-dark-bg);
-  }
+.dark pre[data-theme*=" "] {
+  background-color: var(--shiki-dark-bg);
+  position: relative;
 }
+
+.dark code[data-theme*=" "] span {
+  color: var(--shiki-dark);
+  position: relative;
+}
+
 
 h2>a.subheading-anchor {
   @apply text-xl
@@ -27,6 +28,40 @@ h3>a.subheading-anchor {
 }
 
 .subheading-anchor {
-  @apply no-underline font-semibold text-light-heading dark:text-dark-heading;
+  @apply no-underline font-bold text-light-heading dark:text-dark-heading;
+}
 
+:root {
+  --github-alert-default-color: rgb(175, 184, 193);
+  --github-alert-note-color: rgb(9, 105, 218);
+  --github-alert-important-color: rgb(130, 80, 223);
+  --github-alert-warning-color: rgb(154, 103, 0);
+}
+
+.markdown-alert {
+  padding: 0 1em;
+  margin-bottom: 16px;
+  border-left: 0.25em solid var(--github-alert-default-color);
+}
+
+.markdown-alert-note {
+  border-left-color: var(--github-alert-note-color);
+}
+
+.markdown-alert-important {
+  border-left-color: var(--github-alert-important-color);
+}
+
+.markdown-alert-warning {
+  border-left-color: var(--github-alert-warning-color);
+}
+
+.markdown-alert-header {
+  display: inline-flex;
+  margin-bottom: 4px;
+  align-items: center;
+}
+
+.markdown-alert-header>svg {
+  margin-right: 8px;
 }
