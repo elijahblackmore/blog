@@ -22,14 +22,12 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
-        suppressHydrationWarning
         className={`${spaceGrotesk.variable} ${jetBrainsMono.variable} mx-auto flex min-h-screen max-w-3xl flex-col bg-light-surface px-6 font-sans dark:bg-dark-surface`}
       >
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
           themeColor={{ dark: "#141218", light: "#FEF7FF" }}
           enableSystem
           disableTransitionOnChange
