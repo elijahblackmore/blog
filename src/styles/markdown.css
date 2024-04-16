@@ -1,34 +1,33 @@
 .light pre[data-theme*=" "] {
   background-color: var(--shiki-light-bg);
-  position: relative;
 }
 
 .light code[data-theme*=" "] span {
   color: var(--shiki-light);
-  position: relative;
+}
+
+span[data-line] {
+  @apply mr-4;
 }
 
 .dark pre[data-theme*=" "] {
   background-color: var(--shiki-dark-bg);
-  position: relative;
 }
 
 .dark code[data-theme*=" "] span {
   color: var(--shiki-dark);
-  position: relative;
 }
 
-
-h2>a.subheading-anchor {
-  @apply text-xl
+h2 > a.subheading-anchor {
+  @apply text-xl;
 }
 
-h3>a.subheading-anchor {
-  @apply text-lg
+h3 > a.subheading-anchor {
+  @apply text-lg;
 }
 
 .subheading-anchor {
-  @apply no-underline font-bold text-light-heading dark:text-dark-heading;
+  @apply font-bold text-light-heading no-underline dark:text-dark-heading;
 }
 
 :root {
@@ -62,6 +61,6 @@ h3>a.subheading-anchor {
   align-items: center;
 }
 
-.markdown-alert-header>svg {
+.markdown-alert-header > svg {
   margin-right: 8px;
 }
