@@ -13,6 +13,21 @@ repository, where each post is a Markdown file using
 [YAML front matter](https://jekyllrb.com/docs/front-matter/) as metadata that
 can be parsed.
 
+## Locally running the project
+
+[Clone the repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
+and install the dependencies:
+
+```fish
+pnpm i
+```
+
+Start the development server and go [localhost:3000](localhost:3000):
+
+```fish
+pnpm run dev
+```
+
 ## License
 
 The source code for this site is licensed under the [MIT License](LICENSE).
